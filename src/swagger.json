@@ -1,0 +1,527 @@
+{
+   "openapi": "3.0.3",
+   "info": {
+      "title": "API de localidades de Angola",
+      "description": "Esta APi tem como objectivo apresentar as localidade de Angola, desde as províncias, municípios, comunas e destritos.",
+      "termsOfService": "http://localhost:3333/terms",
+      "contact": {
+         "email": "braulio.andrew@gmail.com"
+      },
+      "version": "1.0.0"
+   },
+   "servers": [
+      {
+         "url": "http://localhost:3333/v1",
+         "description": "Version 1"
+      }
+   ],
+   "paths": {
+      "/province": {
+         "get": {
+            "summary": "Listar províncias",
+            "description": "Rota responsável por retornar todas as províncias",
+            "tags": ["Provincia"],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Province"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/province/code/{code}": {
+         "get": {
+            "summary": "Listar província pelo código",
+            "description": "Rota responsável por retornar a província mediante o código",
+            "tags": ["Provincia"],
+            "parameters": [
+               {
+                  "name": "code",
+                  "in": "path",
+                  "description": "Código da província a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Province"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/province/name/{name}": {
+         "get": {
+            "summary": "Listar província pelo nome",
+            "description": "Rota responsável por retornar a província mediante o nome",
+            "tags": ["Provincia"],
+            "parameters": [
+               {
+                  "name": "name",
+                  "in": "path",
+                  "description": "Nome da província a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Province"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/province/capital/{capital}": {
+         "get": {
+            "summary": "Listar província pela capital",
+            "description": "Rota responsável por retornar a província mediante a capital",
+            "tags": ["Provincia"],
+            "parameters": [
+               {
+                  "name": "capital",
+                  "in": "path",
+                  "description": "Capital da província a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/Province"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/province/lang/{lang}": {
+         "get": {
+            "summary": "Listar província pela língua",
+            "description": "Rota responsável por retornar a província mediante a língua",
+            "tags": ["Provincia"],
+            "parameters": [
+               {
+                  "name": "lang",
+                  "in": "path",
+                  "description": "Língua da província a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Province"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/city/code/{code}": {
+         "get": {
+            "summary": "Listar município pela código",
+            "description": "Rota responsável por retornar o município mediante a código",
+            "tags": ["City(Município)"],
+            "parameters": [
+               {
+                  "name": "code",
+                  "in": "path",
+                  "description": "Código do município a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "$ref": "#/components/schemas/City"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/city/name/{name}": {
+         "get": {
+            "summary": "Listar município pelo nome",
+            "description": "Rota responsável por retornar o município mediante o nome",
+            "tags": ["City(Município)"],
+            "parameters": [
+               {
+                  "name": "name",
+                  "in": "path",
+                  "description": "Nome do município a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/City"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/commune": {
+         "get": {
+            "summary": "Listar comunas",
+            "description": "Rota responsável por retornar todas as comunas",
+            "tags": ["Comuna"],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Commune"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/province/{province}/commune": {
+         "get": {
+            "summary": "Listar comuna pelo nome ou código da provincia",
+            "description": "Rota responsável por retornar a(s) comuna mediante o nome ou código da provincia",
+            "tags": ["Comuna"],
+            "parameters": [
+               {
+                  "name": "province",
+                  "in": "path",
+                  "description": "Nome ou código da provincia a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Commune"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/city/{city}/commune": {
+         "get": {
+            "summary": "Listar comuna pelo nome ou código do município",
+            "description": "Rota responsável por retornar a(s) comuna mediante o nome ou código do município",
+            "tags": ["Comuna"],
+            "parameters": [
+               {
+                  "name": "city",
+                  "in": "path",
+                  "description": "Nome ou código do município a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/Commune"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/district": {
+         "get": {
+            "summary": "Listar distritos",
+            "description": "Rota responsável por retornar todos os distritos",
+            "tags": ["Distrito"],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/District"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/province/{province}/district": {
+         "get": {
+            "summary": "Listar distrito pelo nome ou código da provincia",
+            "description": "Rota responsável por retornar o(s) distrito(s) mediante o nome ou código da provincia",
+            "tags": ["Distrito"],
+            "parameters": [
+               {
+                  "name": "province",
+                  "in": "path",
+                  "description": "Nome ou código da provincia a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/District"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/city/{city}/district": {
+         "get": {
+            "summary": "Listar distrito pelo nome ou código do município",
+            "description": "Rota responsável por retornar a(s) distrito(s) mediante o nome ou código do município",
+            "tags": ["Distrito"],
+            "parameters": [
+               {
+                  "name": "city",
+                  "in": "path",
+                  "description": "Nome ou código do município a listar",
+                  "required": true
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "OK",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "array",
+                           "items": {
+                              "$ref": "#/components/schemas/District"
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "schemas": {
+         "Province": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "number"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "capital": {
+                  "type": "string"
+               },
+               "language": {
+                  "type": "string"
+               },
+               "latitude": {
+                  "type": "number"
+               },
+               "longitude": {
+                  "type": "number"
+               },
+               "area": {
+                  "type": "number"
+               },
+               "city_name": {
+                  "type": "array"
+               }
+            }
+         },
+         "City": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "number"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "capital": {
+                  "type": "string"
+               },
+               "language": {
+                  "type": "string"
+               },
+               "latitude": {
+                  "type": "number"
+               },
+               "longitude": {
+                  "type": "number"
+               },
+               "area": {
+                  "type": "number"
+               },
+               "city_id": {
+                  "type": "number"
+               },
+               "city_code": {
+                  "type": "string"
+               },
+               "city_name": {
+                  "type": "string"
+               }
+            }
+         },
+         "Commune": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "number"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "capital": {
+                  "type": "string"
+               },
+               "language": {
+                  "type": "string"
+               },
+               "latitude": {
+                  "type": "number"
+               },
+               "longitude": {
+                  "type": "number"
+               },
+               "area": {
+                  "type": "number"
+               },
+               "city_name": {
+                  "type": "string"
+               },
+               "commune_name": {
+                  "type": "array"
+               }
+            }
+         },
+         "District": {
+            "type": "object",
+            "properties": {
+               "id": {
+                  "type": "number"
+               },
+               "name": {
+                  "type": "string"
+               },
+               "code": {
+                  "type": "string"
+               },
+               "capital": {
+                  "type": "string"
+               },
+               "language": {
+                  "type": "string"
+               },
+               "latitude": {
+                  "type": "number"
+               },
+               "longitude": {
+                  "type": "number"
+               },
+               "area": {
+                  "type": "number"
+               },
+               "city_code": {
+                  "type": "string"
+               },
+               "city_name": {
+                  "type": "string"
+               },
+               "district_name": {
+                  "type": "array"
+               }
+            }
+         }
+      }
+   }
+}
