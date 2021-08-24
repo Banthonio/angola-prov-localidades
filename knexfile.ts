@@ -1,7 +1,7 @@
 require('dotenv').config();
 // we cannot use export default, because knex doesnt suport yet
 
-import pg from 'pg';
+const pg = require('pg');
 
 if (process.env.DATABASE_URL) {
    pg.defaults.ssl = { rejectUnauthorized: false }
