@@ -1,7 +1,4 @@
-import Knex from 'knex'
-// Knex, capitual because is the types
-
-export async function up(knex: Knex) {
+exports.up = (knex) => {
    return knex.schema.createTable('province', table => {
       table.increments('id').primary();
       table.string('name').notNullable();
@@ -14,6 +11,6 @@ export async function up(knex: Knex) {
    })
 }
 
-export async function down(knex: Knex) {
+exports.down = (knex) => {
    return knex.schema.dropTable('province');
 }
