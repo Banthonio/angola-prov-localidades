@@ -11,7 +11,7 @@ if (process.env.DATABASE_URL) {
 const sharedConfig = {
    client: 'pg',
    migrations: {
-      directory: path.resolve(__dirname, 'src', 'database', 'migrations')
+      directory: __dirname + '/src/database/migrations',
    },
    seeds: {
       directory: path.resolve(__dirname, 'src', 'database', 'seeds')
