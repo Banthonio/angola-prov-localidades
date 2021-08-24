@@ -1,5 +1,4 @@
 require('dotenv').config();
-import path from 'path';
 // we cannot use export default, because knex doesnt suport yet
 
 import pg from 'pg';
@@ -11,10 +10,10 @@ if (process.env.DATABASE_URL) {
 const sharedConfig = {
    client: 'pg',
    migrations: {
-      directory: __dirname + '/src/database/migrations',
+      directory: __dirname + '/src/database/migrations'
    },
    seeds: {
-      directory: path.resolve(__dirname, 'src', 'database', 'seeds')
+      directory: __dirname + 'src/database/seeds'
    },
 }
 module.exports = {
