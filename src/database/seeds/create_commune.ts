@@ -1,6 +1,4 @@
-import * as Knex from 'knex';
-
-export async function seed(knex: Knex): Promise<void> {
+export async function seed(knex): Promise<void> {
    // Deletes ALL existing entries
    await knex("commune").del();
 
