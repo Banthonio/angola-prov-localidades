@@ -9,14 +9,20 @@
       },
       "version": "1.0.0"
    },
+   "host": "angola-prov-localidades.herokuapp.com/",
+   "basePath": "/v1",
    "servers": [
       {
+         "url": "http://angola-prov-localidades.herokuapp.com/v1",
+         "description": "PRD"
+      },
+      {
          "url": "http://localhost:3333/v1",
-         "description": "Version 1"
+         "description": "DEV"
       }
    ],
    "paths": {
-      "/province": {
+      "/provinces": {
          "get": {
             "summary": "Listar províncias",
             "description": "Rota responsável por retornar todas as províncias",
@@ -38,7 +44,7 @@
             }
          }
       },
-      "/province/code/{code}": {
+      "/provinces/code/{code}": {
          "get": {
             "summary": "Listar província pelo código",
             "description": "Rota responsável por retornar a província mediante o código",
@@ -66,7 +72,7 @@
             }
          }
       },
-      "/province/name/{name}": {
+      "/provinces/name/{name}": {
          "get": {
             "summary": "Listar província pelo nome",
             "description": "Rota responsável por retornar a província mediante o nome",
@@ -96,7 +102,7 @@
             }
          }
       },
-      "/province/capital/{capital}": {
+      "/provinces/capital/{capital}": {
          "get": {
             "summary": "Listar província pela capital",
             "description": "Rota responsável por retornar a província mediante a capital",
@@ -124,7 +130,7 @@
             }
          }
       },
-      "/province/lang/{lang}": {
+      "/provinces/lang/{lang}": {
          "get": {
             "summary": "Listar província pela língua",
             "description": "Rota responsável por retornar a província mediante a língua",
@@ -154,7 +160,7 @@
             }
          }
       },
-      "/city/code/{code}": {
+      "/cities/code/{code}": {
          "get": {
             "summary": "Listar município pela código",
             "description": "Rota responsável por retornar o município mediante a código",
@@ -182,7 +188,7 @@
             }
          }
       },
-      "/city/name/{name}": {
+      "/cities/name/{name}": {
          "get": {
             "summary": "Listar município pelo nome",
             "description": "Rota responsável por retornar o município mediante o nome",
@@ -212,7 +218,7 @@
             }
          }
       },
-      "/commune": {
+      "/communes": {
          "get": {
             "summary": "Listar comunas",
             "description": "Rota responsável por retornar todas as comunas",
@@ -234,7 +240,7 @@
             }
          }
       },
-      "/province/{province}/commune": {
+      "/provinces/{province}/communes": {
          "get": {
             "summary": "Listar comuna pelo nome ou código da provincia",
             "description": "Rota responsável por retornar a(s) comuna mediante o nome ou código da provincia",
@@ -264,7 +270,7 @@
             }
          }
       },
-      "/city/{city}/commune": {
+      "/cities/{city}/communes": {
          "get": {
             "summary": "Listar comuna pelo nome ou código do município",
             "description": "Rota responsável por retornar a(s) comuna mediante o nome ou código do município",
@@ -294,7 +300,7 @@
             }
          }
       },
-      "/district": {
+      "/districts": {
          "get": {
             "summary": "Listar distritos",
             "description": "Rota responsável por retornar todos os distritos",
@@ -316,7 +322,7 @@
             }
          }
       },
-      "/province/{province}/district": {
+      "/provinces/{province}/districts": {
          "get": {
             "summary": "Listar distrito pelo nome ou código da provincia",
             "description": "Rota responsável por retornar o(s) distrito(s) mediante o nome ou código da provincia",
@@ -346,7 +352,7 @@
             }
          }
       },
-      "/city/{city}/district": {
+      "/cities/{city}/districts": {
          "get": {
             "summary": "Listar distrito pelo nome ou código do município",
             "description": "Rota responsável por retornar a(s) distrito(s) mediante o nome ou código do município",
@@ -523,5 +529,9 @@
             }
          }
       }
+   },
+   "externalDocs": {
+   "description": "Saiba mais sobre a API",
+   "url": "https://github.com/Banthonio/angola-prov-localidades"
    }
 }
