@@ -1,4 +1,6 @@
 import express from 'express'
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocs from './swagger.json';
 
 import ProvinceController from './controllers/ProvinceController'
 import CityController from './controllers/CityController'
@@ -11,6 +13,18 @@ const provinceController = new ProvinceController();
 const cityController = new CityController();
 const communeController = new CommuneController();
 const districtController = new DistrictController();
+
+routes.get('/', (req, res) => {
+   res.redirect(301, "/api-docs")
+})
+
+routes.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
+
+routes.get("/terms", (req, res) => {
+   return res.json({
+      message: "Free to all",
+   })
+})
 
 routes.get('/provinces', provinceController.index);
 routes.get('/provinces/code/:code', provinceController.showCode);
