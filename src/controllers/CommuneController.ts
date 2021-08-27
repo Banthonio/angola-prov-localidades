@@ -13,43 +13,70 @@ class CommuneController {
 
    // Communes
    async index(req: Request, res: Response) {
-      const communes = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .innerJoin('commune', 'city.id', 'commune.city_id')
          .select('province.*', 'commune.name as commune_name')
-         .as('ignored_alias');
+         .as('ignored_alias')
 
-      return res.json(groupArray(communes));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 
    // Commmunes by province
    async showProvince(req: Request, res: Response) {
       const { province } = req.params;
 
-      const communesProvince = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .innerJoin('commune', 'city.id', 'commune.city_id')
          .select('province.*', 'commune.name as commune_name')
          .as('ignored_alias')
          .where('province.name', 'ilike', `%${province}%`)
-         .orWhere('province.code', 'ilike', `%${province}%`);
+         .orWhere('province.code', 'ilike', `%${province}%`)
 
-      return res.json(groupArray(communesProvince));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 
    // Commmunes by city
    async showCity(req: Request, res: Response) {
       const { city } = req.params;
 
-      const communesCity = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .innerJoin('commune', 'city.id', 'commune.city_id')
          .select('province.*', 'city.name as city_name', 'commune.name as commune_name')
          .as('ignored_alias')
          .where('city.name', 'ilike', `%${city}%`)
-         .orWhere('city.code', 'ilike', `%${city}%`);
+         .orWhere('city.code', 'ilike', `%${city}%`)
 
-      return res.json(groupArray(communesCity));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 }
 export default CommuneController;

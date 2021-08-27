@@ -12,64 +12,109 @@ class ProvinceController {
 
    // Province
    async index(req: Request, res: Response) {
-      const provinces = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .select('province.*', 'city.name as city_name')
-         .as('ignored_alias');
+         .as('ignored_alias')
 
-      return res.json(groupArray(provinces));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 
    // Province by code
    async showCode(req: Request, res: Response) {
       const { code } = req.params;
 
-      const provincesCodes = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .select('province.*', 'city.name as city_name')
          .as('ignored_alias')
-         .where('province.code', 'ilike', `%${code}%`);
+         .where('province.code', 'ilike', `%${code}%`)
 
-      return res.json(groupArray(provincesCodes));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 
    // Province by name
    async showName(req: Request, res: Response) {
       const { name } = req.params;
 
-      const provincesNames = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .select('province.*', 'city.name as city_name')
          .as('ignored_alias')
-         .where('province.name', 'ilike', `%${name}%`);
+         .where('province.name', 'ilike', `%${name}%`)
 
-      return res.json(groupArray(provincesNames));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 
    // Province by capital
    async showCapital(req: Request, res: Response) {
       const { capital } = req.params;
 
-      const provincesCapitals = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .select('province.*', 'city.name as city_name')
          .as('ignored_alias')
-         .where('province.capital', 'ilike', `%${capital}%`);
+         .where('province.capital', 'ilike', `%${capital}%`)
 
-      return res.json(groupArray(provincesCapitals));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 
    // Province by language
    async showLang(req: Request, res: Response) {
       const { lang } = req.params;
 
-      const provincesLangs = await knex('province')
+      await knex('province')
          .innerJoin('city', 'province.id', 'city.province_id')
          .select('province.*', 'city.name as city_name')
          .as('ignored_alias')
-         .where('province.language', 'ilike', `%${lang}%`);
+         .where('province.language', 'ilike', `%${lang}%`)
 
-      return res.json(groupArray(provincesLangs));
+         .then(function (rows: any[]) {
+            if (rows.length === 0) {
+               return res.status(404).json({ error: "No matching records found" });
+            } else {
+               return res.status(200).json(groupArray(rows));
+            }
+         })
+         .catch(function (err: Error) {
+            return res.json({ error: err });
+         })
    }
 }
 
