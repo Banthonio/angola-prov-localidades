@@ -6,7 +6,7 @@ https://angola-prov-localidades.herokuapp.com/api-docs/
 
 ### Exemplo
 
-http://localhost:3333/v1/provinces/name/luanda
+http://angola-prov-localidades.herokuapp.com/v1/provinces/name/luanda
 
 *Response*
 ```javascript
